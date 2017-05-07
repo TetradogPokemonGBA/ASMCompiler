@@ -1,0 +1,18 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 5.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASM Compiler", "ASM Compiler\ASM Compiler.csproj", "{D49375F6-E2C8-4033-A629-E1AFF50A77B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D49375F6-E2C8-4033-A629-E1AFF50A77B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D49375F6-E2C8-4033-A629-E1AFF50A77B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D49375F6-E2C8-4033-A629-E1AFF50A77B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D49375F6-E2C8-4033-A629-E1AFF50A77B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

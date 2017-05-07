@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window
+	x:Class="ASM_Compiler.Window1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="ASM_Compiler"
+	Height="300"
+	Width="300">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="1.82089552238806*" />
+			<RowDefinition
+				Height="0.17910447761194*" />
+		</Grid.RowDefinitions>
+		<ScrollViewer
+			HorizontalScrollBarVisibility="Disabled"
+			VerticalScrollBarVisibility="Auto">
+			<TextBox
+				x:Name="txtAsmToCompile"
+				TextWrapping="Wrap"
+				AcceptsReturn="True" />
+		</ScrollViewer>
+		<Grid
+			Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="*" />
+				<ColumnDefinition
+					Width="80" />
+				<ColumnDefinition
+					Width="100" />
+			</Grid.ColumnDefinitions>
+			<TextBox
+				x:Name="tbMensaje" IsReadOnly="True"/>
+			<Button
+				x:Name="btnCompilar"
+				Content="Compilar"
+				Grid.Column="1"
+				Click="btnCompilar_Click" />
+			<Button
+				x:Name="btnGuardar"
+				Content="Guardar resultado"
+				Grid.Column="2"
+				Click="btnGuardar_Click" />
+		</Grid>
+	</Grid>
+</Window>
