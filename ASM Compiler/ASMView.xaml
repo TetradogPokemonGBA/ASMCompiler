@@ -1,17 +1,70 @@
-<Window x:Class="ASM_Compiler.ASMView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ASM Compiler" Height="300" Width="300">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window
+	x:Class="ASM_Compiler.ASMView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="ASM Compiler"
+	Height="300"
+	Width="300">
 	<TabControl>
-		<TabItem Header="ASM Code">
-			<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-			<TextBox x:Name="txtAsmCode" IsReadOnly="True" TextWrapping="Wrap"/>
-		</ScrollViewer>
+		<TabItem
+			Header="ASM Code">
+			<ScrollViewer
+				HorizontalScrollBarVisibility="Disabled"
+				VerticalScrollBarVisibility="Auto">
+				<TextBox
+					x:Name="txtAsmCode"
+					IsReadOnly="True"
+					TextWrapping="Wrap" />
+			</ScrollViewer>
 		</TabItem>
-			<TabItem Header="ASM Binary">
-		<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-				<TextBox x:Name="txtAsmBinary" IsReadOnly="True" TextWrapping="Wrap" />
-		</ScrollViewer>
+		<TabItem
+			Header="ASM Binary">
+			<ScrollViewer
+				HorizontalScrollBarVisibility="Disabled"
+				VerticalScrollBarVisibility="Auto">
+				<TextBox
+					x:Name="txtAsmBinary"
+					IsReadOnly="True"
+					TextWrapping="Wrap" />
+			</ScrollViewer>
+		</TabItem>
+		<TabItem
+			Header="Binario en ROM">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition
+						Height="1.79166666666667*" />
+					<RowDefinition
+						Height="0.208333333333333*" />
+				</Grid.RowDefinitions>
+				<StackPanel>
+					<Button
+						x:Name="btnLoadRom"
+						Content="Cargar Rom"
+						Click="btnLoadRom_Click" />
+					<Grid Height="50"/>
+					<Image
+						x:Name="imgEdicion"
+						Height="100" />
+					<TextBlock
+						x:Name="txtNameRom"  HorizontalAlignment="Center"/>
+				</StackPanel>
+				<Grid
+					Grid.Row="1">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<TextBox
+						x:Name="txtAsmBinaryInRom"
+						IsReadOnly="True"
+						TextWrapping="Wrap" />
+					<Button
+						x:Name="btnPonerOQuitarBIN"
+						Content="Insertar"
+						Grid.Column="1"
+						Click="btnPonerOQuitarBIN_Click" />
+				</Grid>
+			</Grid>
 		</TabItem>
 	</TabControl>
 </Window>

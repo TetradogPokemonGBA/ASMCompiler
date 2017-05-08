@@ -8,6 +8,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -28,6 +29,7 @@ namespace ASM_Compiler
 	public partial class ASMView : Window
 	{
 		ASM asmToView;
+		RomGba romGba;
 		public ASMView(ASM asmToView)
 		{
 			ContextMenu menu=new ContextMenu();
@@ -45,6 +47,69 @@ namespace ASM_Compiler
 		public ASM AsmToView {
 			get {
 				return asmToView;
+			}
+		}
+		void btnLoadRom_Click(object sender, RoutedEventArgs e)
+		{
+			OpenFileDialog opnFile=new OpenFileDialog();
+			int offsetAsm;
+			opnFile.Filter="Pokemon GBA|*.gba";
+			if(opnFile.ShowDialog().GetValueOrDefault())
+			{
+				romGba=new RomGba(opnFile.FileName);
+				try{
+					switch (EdicionPokemon.GetEdicionPokemon(romGba).AbreviacionRom) {
+						case AbreviacionCanon.AXV:
+							imgEdicion.SetImage(ASM_Compiler.Resources.PokeballRuby); 
+							break;
+						case AbreviacionCanon.AXP:
+							imgEdicion.SetImage(ASM_Compiler.Resources.PokeballZafiro); 
+							break;
+						case AbreviacionCanon.BPE:
+							imgEdicion.SetImage(ASM_Compiler.Resources.PokeballEsmeralda); 
+							break;
+						case AbreviacionCanon.BPR:
+							imgEdicion.SetImage(ASM_Compiler.Resources.PokeballRojoFuego); 
+							break;
+						case AbreviacionCanon.BPG:
+							imgEdicion.SetImage(ASM_Compiler.Resources.PokeballVerdeHoja); 
+							break;
+						default:
+							throw new ArgumentOutOfRangeException();
+					}
+				txtNameRom.Text=romGba.Nombre;
+				//pongo la imagen
+				offsetAsm=   romGba.Data.SearchArray(asmToView.AsmBinary);
+				if(offsetAsm>0)
+				{
+					btnPonerOQuitarBIN.Content="Quitar";
+					txtAsmBinaryInRom.Text=((Gabriel.Cat.Hex)offsetAsm).ByteString;
+				}else{
+					btnPonerOQuitarBIN.Content="Insertar";
+					txtAsmBinaryInRom.Text="";
+				}}
+				catch(Exception m){
+					MessageBox.Show("Solo se admiten roms pokemon sin contar con el mundo misterioso");
+				}
+			}
+		}
+		void btnPonerOQuitarBIN_Click(object sender, RoutedEventArgs e)
+		{
+			if(btnPonerOQuitarBIN.Content.ToString()[0]=='Q')
+			{
+				//quito el binario de la rom
+				romGba.Data.Remove(romGba.Data.SearchArray(asmToView.AsmBinary),asmToView.AsmBinary.Length,0x0);
+				btnPonerOQuitarBIN.Content="Insertar";
+				txtAsmBinaryInRom.Text="";
+			}else{
+				btnPonerOQuitarBIN.Content="Quitar";
+				txtAsmBinaryInRom.Text=((Gabriel.Cat.Hex)romGba.Data.SetArray(asmToView.AsmBinary)).ByteString;
+			}
+			try{
+			romGba.Save();
+			}catch{
+				MessageBox.Show("No se puede guardar en el archivo actual \n"+romGba.BackUp());
+				
 			}
 		}
 
