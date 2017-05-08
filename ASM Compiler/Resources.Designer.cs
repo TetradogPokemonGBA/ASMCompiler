@@ -63,6 +63,16 @@ namespace ASM_Compiler {
 		/// <summary>
 		///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 		/// </summary>
+		internal static System.Drawing.Bitmap GbaIcono {
+			get {
+				object obj = ResourceManager.GetObject("GbaIcono", resourceCulture);
+				return ((System.Drawing.Bitmap)(obj));
+			}
+		}
+		
+		/// <summary>
+		///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+		/// </summary>
 		internal static System.Drawing.Bitmap PokeballEsmeralda {
 			get {
 				object obj = ResourceManager.GetObject("PokeballEsmeralda", resourceCulture);

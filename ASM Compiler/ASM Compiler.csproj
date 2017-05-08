@@ -101,7 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
+      <Generator>ResXFileCodeGenerator</Generator>
       <CustomToolNamespace>ASM_Compiler</CustomToolNamespace>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>

@@ -60,23 +60,25 @@ namespace ASM_Compiler
 				try{
 					switch (EdicionPokemon.GetEdicionPokemon(romGba).AbreviacionRom) {
 						case AbreviacionCanon.AXV:
-							imgEdicion.SetImage(ASM_Compiler.Resources.PokeballRuby); 
+							imgEdicion.SetImage(ASM_Compiler.Resources.PokeballRuby);
 							break;
 						case AbreviacionCanon.AXP:
-							imgEdicion.SetImage(ASM_Compiler.Resources.PokeballZafiro); 
+							imgEdicion.SetImage(ASM_Compiler.Resources.PokeballZafiro);
 							break;
 						case AbreviacionCanon.BPE:
-							imgEdicion.SetImage(ASM_Compiler.Resources.PokeballEsmeralda); 
+							imgEdicion.SetImage(ASM_Compiler.Resources.PokeballEsmeralda);
 							break;
 						case AbreviacionCanon.BPR:
-							imgEdicion.SetImage(ASM_Compiler.Resources.PokeballRojoFuego); 
+							imgEdicion.SetImage(ASM_Compiler.Resources.PokeballRojoFuego);
 							break;
 						case AbreviacionCanon.BPG:
-							imgEdicion.SetImage(ASM_Compiler.Resources.PokeballVerdeHoja); 
+							imgEdicion.SetImage(ASM_Compiler.Resources.PokeballVerdeHoja);
 							break;
-						default:
-							throw new ArgumentOutOfRangeException();
-					}
+							
+					}}
+				catch{
+					imgEdicion.SetImage(ASM_Compiler.Resources.GbaIcono);
+				}
 				txtNameRom.Text=romGba.Nombre;
 				//pongo la imagen
 				offsetAsm=   romGba.Data.SearchArray(asmToView.AsmBinary);
@@ -88,10 +90,8 @@ namespace ASM_Compiler
 					btnPonerOQuitarBIN.Content="Insertar";
 					txtAsmBinaryInRom.Text="";
 				}}
-				catch(Exception m){
-					MessageBox.Show("Solo se admiten roms pokemon sin contar con el mundo misterioso");
-				}
-			}
+			
+			
 		}
 		void btnPonerOQuitarBIN_Click(object sender, RoutedEventArgs e)
 		{
@@ -106,7 +106,7 @@ namespace ASM_Compiler
 				txtAsmBinaryInRom.Text=((Gabriel.Cat.Hex)romGba.Data.SetArray(asmToView.AsmBinary)).ByteString;
 			}
 			try{
-			romGba.Save();
+				romGba.Save();
 			}catch{
 				MessageBox.Show("No se puede guardar en el archivo actual \n"+romGba.BackUp());
 				
