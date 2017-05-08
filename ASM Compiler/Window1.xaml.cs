@@ -36,9 +36,6 @@ namespace ASM_Compiler
 		}
 		void btnCompilar_Click(object sender, RoutedEventArgs e)
 		{
-			tbMensaje.Text = "Compilando";
-			tbMensaje.Foreground = Brushes.Blue;
-
 			resultadoCompilado = ASM.Compilar(txtAsmToCompile.Text);
 			if (resultadoCompilado.AsmBinary != null) {
 				tbMensaje.Text = "Todo compilado correctamente";
@@ -46,7 +43,10 @@ namespace ASM_Compiler
 				btnGuardar.IsEnabled = true;
 				btnShowCompiledResult.IsEnabled=true;
 			} else {
-				tbMensaje.Text = resultadoCompilado.ErrorCompilar;
+				if(!String.IsNullOrEmpty(resultadoCompilado.ErrorCompilar))
+					tbMensaje.Text = resultadoCompilado.ErrorCompilar;
+				else
+					tbMensaje.Text="¡Hay errores en el código!";
 				tbMensaje.Foreground = Brushes.Red;
 				btnGuardar.IsEnabled = false;
 				btnShowCompiledResult.IsEnabled=false;
@@ -55,13 +55,17 @@ namespace ASM_Compiler
 		}
 		void btnGuardar_Click(object sender, RoutedEventArgs e)
 		{
-			FileStream fs;
+			SaveASM(resultadoCompilado);
+		}
+		public static void SaveASM(ASM asm)
+		{
+				FileStream fs;
 			BinaryWriter br;
 			SaveFileDialog sfdCodigo = new SaveFileDialog();
 			if (sfdCodigo.ShowDialog().GetValueOrDefault()) {
 				fs = new FileStream(sfdCodigo.FileName, FileMode.CreateNew);
 				br = new BinaryWriter(fs);
-				br.BaseStream.Write(resultadoCompilado.AsmBinary);
+				br.BaseStream.Write(asm.AsmBinary);
 				br.Close();
 				fs.Close();
 			}

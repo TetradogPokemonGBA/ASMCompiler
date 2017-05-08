@@ -33,7 +33,7 @@ namespace ASM_Compiler
 			ContextMenu menu=new ContextMenu();
 			MenuItem item=new MenuItem();
 			item.Header="Save Binary output";
-			item.Click+=(s,e)=>Save();
+			item.Click+=(s,e)=>Window1.SaveASM(asmToView);
 			menu.Items.Add(item);
 			ContextMenu=menu;
 			this.asmToView=asmToView;
@@ -48,18 +48,5 @@ namespace ASM_Compiler
 			}
 		}
 
-		void Save()
-		{
-			FileStream fs;
-			BinaryWriter br;
-			SaveFileDialog sfdCodigo = new SaveFileDialog();
-			if (sfdCodigo.ShowDialog().GetValueOrDefault()) {
-				fs = new FileStream(sfdCodigo.FileName, FileMode.CreateNew);
-				br = new BinaryWriter(fs);
-				br.BaseStream.Write(AsmToView.AsmBinary);
-				br.Close();
-				fs.Close();
-			}
-		}
 	}
 }
