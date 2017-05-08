@@ -16,3 +16,4 @@ C:\Users\tetra\Documents\SharpDevelop Projects\ASM Compiler\ASM Compiler\obj\Deb
 C:\Users\tetra\Documents\SharpDevelop Projects\ASM Compiler\ASM Compiler\bin\Debug\Gabriel.Cat.Wpf.dll
 C:\Users\tetra\Documents\SharpDevelop Projects\ASM Compiler\ASM Compiler\obj\Debug\ASM_Compiler.Resources.resources
 C:\Users\tetra\Documents\SharpDevelop Projects\ASM Compiler\ASM Compiler\obj\Debug\ASM Compiler.csproj.GenerateResource.Cache
+C:\Users\tetra\Documents\SharpDevelop Projects\ASM Compiler\ASM Compiler\obj\Debug\ASM Compiler.csprojResolveAssemblyReference.cache

@@ -53,7 +53,7 @@ namespace ASM_Compiler
 		{
 			OpenFileDialog opnFile=new OpenFileDialog();
 			int offsetAsm;
-			opnFile.Filter="Pokemon GBA|*.gba";
+			opnFile.Filter="Rom GBA|*.gba";
 			if(opnFile.ShowDialog().GetValueOrDefault())
 			{
 				romGba=new RomGba(opnFile.FileName);
@@ -103,7 +103,14 @@ namespace ASM_Compiler
 				txtAsmBinaryInRom.Text="";
 			}else{
 				btnPonerOQuitarBIN.Content="Quitar";
-				txtAsmBinaryInRom.Text=((Gabriel.Cat.Hex)romGba.Data.SetArray(asmToView.AsmBinary)).ByteString;
+				try{
+					txtAsmBinaryInRom.Text=((Gabriel.Cat.Hex)romGba.Data.SetArray(asmToView.AsmBinary)).ByteString;
+				}catch{
+					try{
+						txtAsmBinaryInRom.Text=((Gabriel.Cat.Hex)romGba.Data.SetArray(asmToView.AsmBinary,0)).ByteString;
+					}catch{
+						MessageBox.Show("No hay espacio libre...");}
+				}
 			}
 			try{
 				romGba.Save();
