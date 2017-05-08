@@ -27,25 +27,31 @@ namespace ASM_Compiler
 	/// </summary>
 	public partial class Window1 : Window
 	{
-		byte[] datosResultado;
+		ASM resultadoCompilado;
 		public Window1()
 		{
 			InitializeComponent();
+			btnGuardar.IsEnabled = false;
+			btnShowCompiledResult.IsEnabled=false;
 		}
 		void btnCompilar_Click(object sender, RoutedEventArgs e)
 		{
-			tbMensaje.Text="Compilando";
-			tbMensaje.Foreground=Brushes.Blue;
-			try {
-				datosResultado = ASM.Compilar(txtAsmToCompile.Text);
+			tbMensaje.Text = "Compilando";
+			tbMensaje.Foreground = Brushes.Blue;
+
+			resultadoCompilado = ASM.Compilar(txtAsmToCompile.Text);
+			if (resultadoCompilado.AsmBinary != null) {
 				tbMensaje.Text = "Todo compilado correctamente";
 				tbMensaje.Foreground = Brushes.GreenYellow;
 				btnGuardar.IsEnabled = true;
-			} catch (Exception m) {
-				tbMensaje.Text = m.Message;
+				btnShowCompiledResult.IsEnabled=true;
+			} else {
+				tbMensaje.Text = resultadoCompilado.ErrorCompilar;
 				tbMensaje.Foreground = Brushes.Red;
 				btnGuardar.IsEnabled = false;
+				btnShowCompiledResult.IsEnabled=false;
 			}
+			
 		}
 		void btnGuardar_Click(object sender, RoutedEventArgs e)
 		{
@@ -55,10 +61,14 @@ namespace ASM_Compiler
 			if (sfdCodigo.ShowDialog().GetValueOrDefault()) {
 				fs = new FileStream(sfdCodigo.FileName, FileMode.CreateNew);
 				br = new BinaryWriter(fs);
-				br.BaseStream.Write(datosResultado);
+				br.BaseStream.Write(resultadoCompilado.AsmBinary);
 				br.Close();
 				fs.Close();
 			}
+		}
+		void btnShowCompiledResult_Click(object sender, RoutedEventArgs e)
+		{
+			new ASMView(resultadoCompilado).Show();
 		}
 	}
 }

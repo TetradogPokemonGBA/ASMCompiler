@@ -12,3 +12,5 @@ C:\Users\tetra\Documents\SharpDevelop Projects\ASM Compiler\ASM Compiler\obj\Deb
 C:\Users\tetra\Documents\SharpDevelop Projects\ASM Compiler\ASM Compiler\obj\Debug\ASM Compiler.g.resources
 C:\Users\tetra\Documents\SharpDevelop Projects\ASM Compiler\ASM Compiler\obj\Debug\ASM Compiler.exe
 C:\Users\tetra\Documents\SharpDevelop Projects\ASM Compiler\ASM Compiler\obj\Debug\ASM Compiler.pdb
+C:\Users\tetra\Documents\SharpDevelop Projects\ASM Compiler\ASM Compiler\obj\Debug\ASMView.baml
+C:\Users\tetra\Documents\SharpDevelop Projects\ASM Compiler\ASM Compiler\obj\Debug\ASMView.g.cs

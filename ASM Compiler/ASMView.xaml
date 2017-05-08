@@ -1,0 +1,17 @@
+<Window x:Class="ASM_Compiler.ASMView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ASM Compiler" Height="300" Width="300">
+	<TabControl>
+		<TabItem Header="ASM Code">
+			<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+			<TextBox x:Name="txtAsmCode" IsReadOnly="True" TextWrapping="Wrap"/>
+		</ScrollViewer>
+		</TabItem>
+			<TabItem Header="ASM Binary">
+		<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+				<TextBox x:Name="txtAsmBinary" IsReadOnly="True" TextWrapping="Wrap" />
+		</ScrollViewer>
+		</TabItem>
+	</TabControl>
+</Window>

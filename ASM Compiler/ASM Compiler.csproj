@@ -73,6 +73,10 @@
       <SubType>Code</SubType>
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ASMView.xaml.cs">
+      <DependentUpon>ASMView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\WPFAssemblyInfo.cs" />
     <Compile Include="Window1.xaml.cs">
@@ -81,6 +85,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ASMView.xaml" />
     <Page Include="Window1.xaml" />
   </ItemGroup>
   <ItemGroup>
