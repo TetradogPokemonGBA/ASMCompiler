@@ -30,9 +30,15 @@ namespace ASM_Compiler
 		ASM resultadoCompilado;
 		public Window1()
 		{
+			MenuItem item=new MenuItem();
+			item.Header="Save ASM code";
+			item.Click+=(s,e)=>SaveASMCode(resultadoCompilado); 
+			
 			InitializeComponent();
+			txtAsmToCompile.ContextMenu=new ContextMenu();
+			txtAsmToCompile.ContextMenu.Items.Add(item);
 			btnGuardar.IsEnabled = false;
-			btnShowCompiledResult.IsEnabled=false;
+			btnShowCompiledResult.IsEnabled = false;
 		}
 		void btnCompilar_Click(object sender, RoutedEventArgs e)
 		{
@@ -41,27 +47,28 @@ namespace ASM_Compiler
 				tbMensaje.Text = "Todo compilado correctamente";
 				tbMensaje.Foreground = Brushes.GreenYellow;
 				btnGuardar.IsEnabled = true;
-				btnShowCompiledResult.IsEnabled=true;
+				btnShowCompiledResult.IsEnabled = true;
 			} else {
-				if(!String.IsNullOrEmpty(resultadoCompilado.ErrorCompilar))
+				if (!String.IsNullOrEmpty(resultadoCompilado.ErrorCompilar))
 					tbMensaje.Text = resultadoCompilado.ErrorCompilar;
 				else
-					tbMensaje.Text="¡Hay errores en el código!";
+					tbMensaje.Text = "¡Hay errores en el código!";
 				tbMensaje.Foreground = Brushes.Red;
 				btnGuardar.IsEnabled = false;
-				btnShowCompiledResult.IsEnabled=false;
+				btnShowCompiledResult.IsEnabled = false;
 			}
 			
 		}
 		void btnGuardar_Click(object sender, RoutedEventArgs e)
 		{
-			SaveASM(resultadoCompilado);
+			SaveASMBin(resultadoCompilado);
 		}
-		public static void SaveASM(ASM asm)
+		public static void SaveASMBin(ASM asm)
 		{
-				FileStream fs;
+			FileStream fs;
 			BinaryWriter br;
 			SaveFileDialog sfdCodigo = new SaveFileDialog();
+			sfdCodigo.DefaultExt=".bin";
 			if (sfdCodigo.ShowDialog().GetValueOrDefault()) {
 				fs = new FileStream(sfdCodigo.FileName, FileMode.CreateNew);
 				br = new BinaryWriter(fs);
@@ -70,6 +77,22 @@ namespace ASM_Compiler
 				fs.Close();
 			}
 		}
+
+		public static void SaveASMCode(ASM asm)
+		{
+			FileStream fs;
+			BinaryWriter br;
+			SaveFileDialog sfdCodigo = new SaveFileDialog();
+			sfdCodigo.DefaultExt=".asm";
+			if (sfdCodigo.ShowDialog().GetValueOrDefault()) {
+				fs = new FileStream(sfdCodigo.FileName, FileMode.CreateNew);
+				br = new BinaryWriter(fs);
+				br.BaseStream.Write(asm.AsmCode);
+				br.Close();
+				fs.Close();
+			}
+		}
+
 		void btnShowCompiledResult_Click(object sender, RoutedEventArgs e)
 		{
 			new ASMView(resultadoCompilado).Show();
