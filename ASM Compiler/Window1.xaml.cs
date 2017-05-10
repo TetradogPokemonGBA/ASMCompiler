@@ -32,14 +32,38 @@ namespace ASM_Compiler
 		{
 			MenuItem item=new MenuItem();
 			item.Header="Save ASM code";
-			item.Click+=(s,e)=>SaveASMCode(resultadoCompilado); 
+			item.Click+=(s,e)=>{		
+				SaveASMCode(txtAsmToCompile.Text);
+			};
 			
 			InitializeComponent();
 			txtAsmToCompile.ContextMenu=new ContextMenu();
 			txtAsmToCompile.ContextMenu.Items.Add(item);
 			btnGuardar.IsEnabled = false;
 			btnShowCompiledResult.IsEnabled = false;
+			
+			//para poder cargar un archivo arrastrado a dentro
+			
+			Drop+=DragEvent;
+			AllowDrop=true;
+			PreviewDragOver+=(s,e)=>e.Handled=true;
+			
 		}
+
+		void DragEvent(object sender, DragEventArgs e)
+		{
+			bool hacerlo;
+			if(String.IsNullOrEmpty(txtAsmToCompile.Text))
+				hacerlo=true;
+			else
+			{
+				hacerlo=MessageBox.Show("Quieres sustituir el texto que hay por el nuevo del archivo?","Atención, no se guardará lo que hay",MessageBoxButton.YesNo,MessageBoxImage.Question)==MessageBoxResult.Yes;
+				
+			}
+			if(hacerlo)
+				txtAsmToCompile.Text=File.ReadAllText(((string[])e.Data.GetData(DataFormats.FileDrop))[0],System.Text.Encoding.Unicode);
+		}
+
 		void btnCompilar_Click(object sender, RoutedEventArgs e)
 		{
 			resultadoCompilado = ASM.Compilar(txtAsmToCompile.Text);
@@ -61,33 +85,37 @@ namespace ASM_Compiler
 		}
 		void btnGuardar_Click(object sender, RoutedEventArgs e)
 		{
-			SaveASMBin(resultadoCompilado);
+			SaveASMBin(resultadoCompilado.AsmBinary);
 		}
-		public static void SaveASMBin(ASM asm)
+		public static void SaveASMBin(byte[] asmBin)
 		{
 			FileStream fs;
 			BinaryWriter br;
 			SaveFileDialog sfdCodigo = new SaveFileDialog();
 			sfdCodigo.DefaultExt=".bin";
 			if (sfdCodigo.ShowDialog().GetValueOrDefault()) {
-				fs = new FileStream(sfdCodigo.FileName, FileMode.CreateNew);
+				if(File.Exists(sfdCodigo.FileName))
+					File.Delete(sfdCodigo.FileName);
+				fs = new FileStream(sfdCodigo.FileName, FileMode.Create);
 				br = new BinaryWriter(fs);
-				br.BaseStream.Write(asm.AsmBinary);
+				br.BaseStream.Write(asmBin);
 				br.Close();
 				fs.Close();
 			}
 		}
 
-		public static void SaveASMCode(ASM asm)
+		public static void SaveASMCode(string asmCode)
 		{
 			FileStream fs;
 			BinaryWriter br;
 			SaveFileDialog sfdCodigo = new SaveFileDialog();
 			sfdCodigo.DefaultExt=".asm";
 			if (sfdCodigo.ShowDialog().GetValueOrDefault()) {
-				fs = new FileStream(sfdCodigo.FileName, FileMode.CreateNew);
-				br = new BinaryWriter(fs);
-				br.BaseStream.Write(asm.AsmCode);
+				if(File.Exists(sfdCodigo.FileName))
+					File.Delete(sfdCodigo.FileName);
+				fs = new FileStream(sfdCodigo.FileName, FileMode.Create);
+				br = new BinaryWriter(fs,Encoding.Unicode);
+				br.BaseStream.Write(asmCode);
 				br.Close();
 				fs.Close();
 			}

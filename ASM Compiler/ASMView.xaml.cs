@@ -34,13 +34,16 @@ namespace ASM_Compiler
 		{
 			ContextMenu menu=new ContextMenu();
 			MenuItem item=new MenuItem();
-			item.Header="Save Binary output";
-			item.Click+=(s,e)=>Window1.SaveASMBin(asmToView);
+			item.Header="Save ASM Code";
+			item.Click+=(s,e)=>Window1.SaveASMCode(asmToView.AsmCode); 
 			menu.Items.Add(item);
+			
 			item=new MenuItem();
-			item.Header="Save ASM code";
-			item.Click+=(s,e)=>Window1.SaveASMCode(asmToView); 
+			item.Header="Save ASM Binary";
+			item.Click+=(s,e)=>Window1.SaveASMBin(asmToView.AsmBinary);
 			menu.Items.Add(item);
+			
+	
 			ContextMenu=menu;
 			this.asmToView=asmToView;
 			InitializeComponent();
