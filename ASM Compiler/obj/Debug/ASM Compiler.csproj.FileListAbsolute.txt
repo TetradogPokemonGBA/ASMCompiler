@@ -17,3 +17,22 @@ C:\Users\tetra\Documents\SharpDevelop Projects\ASM Compiler\ASM Compiler\bin\Deb
 C:\Users\tetra\Documents\SharpDevelop Projects\ASM Compiler\ASM Compiler\obj\Debug\ASM_Compiler.Resources.resources
 C:\Users\tetra\Documents\SharpDevelop Projects\ASM Compiler\ASM Compiler\obj\Debug\ASM Compiler.csproj.GenerateResource.Cache
 C:\Users\tetra\Documents\SharpDevelop Projects\ASM Compiler\ASM Compiler\obj\Debug\ASM Compiler.csprojResolveAssemblyReference.cache
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\bin\Debug\ASM Compiler.exe.config
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\bin\Debug\ASM Compiler.exe
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\bin\Debug\ASM Compiler.pdb
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\bin\Debug\Gabriel.Cat.Utilitats.dll
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\bin\Debug\Gabriel.Cat.Wpf.dll
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\bin\Debug\PokemonGBAFrameWork.dll
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\bin\Debug\Gabriel.Cat.Utilitats.pdb
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\obj\Debug\ASM Compiler.csprojResolveAssemblyReference.cache
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\obj\Debug\ASMView.baml
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\obj\Debug\Window1.baml
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\obj\Debug\ASMView.g.cs
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\obj\Debug\Window1.g.cs
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\obj\Debug\App.g.cs
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\obj\Debug\ASM Compiler_MarkupCompile.cache
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\obj\Debug\ASM Compiler.g.resources
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\obj\Debug\ASM_Compiler.Resources.resources
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\obj\Debug\ASM Compiler.csproj.GenerateResource.Cache
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\obj\Debug\ASM Compiler.exe
+C:\Users\tetra\Documents\SharpDevelopProjects\ASM Compiler\ASM Compiler\obj\Debug\ASM Compiler.pdb

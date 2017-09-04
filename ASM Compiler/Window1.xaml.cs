@@ -66,12 +66,18 @@ namespace ASM_Compiler
 
 		void btnCompilar_Click(object sender, RoutedEventArgs e)
 		{
+			IList<string> dissambledCode;
 			resultadoCompilado = ASM.Compilar(txtAsmToCompile.Text);
+			txtAsmDecopiled.Text="";
 			if (resultadoCompilado.AsmBinary != null) {
 				tbMensaje.Text = "Todo compilado correctamente";
 				tbMensaje.Foreground = Brushes.GreenYellow;
 				btnGuardar.IsEnabled = true;
 				btnShowCompiledResult.IsEnabled = true;
+				dissambledCode=Thumb.Disassemble(resultadoCompilado.AsmBinary);
+				for(int i=0;i<dissambledCode.Count;i++)
+					txtAsmDecopiled.Text+=dissambledCode[i]+"\n";
+				
 			} else {
 				if (!String.IsNullOrEmpty(resultadoCompilado.ErrorCompilar))
 					tbMensaje.Text = resultadoCompilado.ErrorCompilar;
